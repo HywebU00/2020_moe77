@@ -20,7 +20,7 @@ body {
     width: 100%;
     margin: 0px auto;
     @include screen('mobile') {
-        background: #FFF;
+        // background: #FFF;
         overflow: hidden;
         overflow-y: auto;
     }
@@ -37,7 +37,7 @@ body {
     padding: 0;
     // 可先設定一個中央區塊最大寬，限制accesskey對齊
     @include screen('mobile') {
-        padding-top: 55px;
+        padding-top: 90px;
     }
     h2 {
         line-height: 1.25em;

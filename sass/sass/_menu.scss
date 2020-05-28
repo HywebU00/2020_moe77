@@ -1,7 +1,7 @@
 .menu {
     @include box-sizing;
     margin: 0 auto;
-    min-height: 2.5em;
+    min-height: 2.2em;
     position: relative;
     z-index: 99;
     // 預設選單 ul
@@ -13,18 +13,34 @@
         text-align: left;
         margin: 0;
         padding: 0;
+
+        display: flex;
+        flex-flow: row-reverse;
         // 第一層選單樣式
         >li {
             display: inline-block;
             vertical-align: top;
-            min-width: 10em;
+            // box-shadow: inset 2px 0px 0px 0px lighten($primaryColor, 20);
+            box-shadow: inset 2px 0px 0px 0px rgba(255,255,255,.5);
+            // min-width: 10em;
+
+            &:nth-child(1){ order:3; }
+            &:nth-child(2){ order:2; }
+            &:nth-child(3){ order:1; }
+
+            &:first-child{
+                box-shadow: none;
+            }
+
             >a {
                 display: block;
                 padding: 0 1em;
-                min-height: 2.5em;
+                min-height: 2.2em;
                 font-weight: bold;
-                line-height: 2.5em;
-                color: $color-word;
+                line-height: 2.2em;
+                color: #fff;
+
+                transition: background .4s ease;
             }
             &.hasChild {
                 >a {
@@ -35,7 +51,7 @@
                         display: inline-block;
                         margin-left: .5em;
                         vertical-align: middle;
-                        border: 2px solid lighten($color-word, 40);
+                        border: 2px solid #fff;
                         transform: rotate(135deg);
                         border-bottom: none;
                         border-left: none;
@@ -43,9 +59,15 @@
                     }
                 }
             }
-            &:hover {
+
+            // &:hover, &:focus{
+            //     background: darken($primaryColor, 10);
+            //     box-shadow: none;
+            // }
+            &:hover, &:focus{
                 >a {
-                    color: $aHover;
+                    // color: $aHover;
+                    background: darken($primaryColor, 15);
                     &:after {
                         border: 2px solid $aHover;
                         border-bottom: none;

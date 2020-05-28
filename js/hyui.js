@@ -41,10 +41,11 @@ $(function() {
     ////////////// 行動版選單切換////////////
     /*-----------------------------------*/
     _body.prepend('<aside class="sidebar"><div class="m_area"><button type="button" class="sidebarClose">關閉</button></div><div class="menu_overlay"></div></aside>');
-    $('header .container').prepend('<button type="button" class="sidebarCtrl">側欄選單</button><button type="button" class="searchCtrl">查詢</button>');
+    $('header .container').prepend('<button type="button" class="sidebarCtrl">側欄選單</button>');
     var menu_status = false;
     var _sidebar = $('.sidebar'),
-        _search = $('.search'),
+        // _search = $('.search'),
+        _user = $('.user'),
         _nav = $('.navigation'),
         _sidebarClose = $('.sidebarClose'),
         _sidebarCtrl = $('.sidebarCtrl'),
@@ -61,7 +62,7 @@ $(function() {
         }, 400, 'easeOutQuint');
         _body.addClass('noscroll');
         _overlay.fadeIn();
-        $('.m_search').hide();
+        // $('.m_search').hide();
         search_mode = false;
     }
     // 縮合選單 function
@@ -98,9 +99,10 @@ $(function() {
         _menu.find('li ul').hide();
     });
     // 先複製過去
+    _user.clone().prependTo(_mArea);
     _nav.clone().prependTo(_mArea);
     _menu.clone().prependTo(_mArea);
-    _search.clone().prependTo(_body).addClass('m_search');
+    // _search.clone().prependTo(_body).addClass('m_search');
     var liHasChild_level1 = $('aside .menu ul').children('li.hasChild'),
         liHasChild_level2 = $('aside .menu ul ul').children('li.hasChild'),
         liHasChild_level3 = $('aside .menu ul ul ul').children('li.hasChild'),
@@ -151,7 +153,7 @@ $(function() {
                 e.preventDefault();
             });
             _body.off('touchmove');
-            $('.m_search').hide();
+            // $('.m_search').hide();
             $('.language').find('ul').hide();
         } else {
             /*-----------------------------------*/
@@ -160,11 +162,11 @@ $(function() {
             hideSidebar();
             _body.removeClass('noscroll');
             _nav.prependTo('.header .container');
-            _search.appendTo('.header .container');
+            // _search.appendTo('.header .container');
             _menu.appendTo('.header .container');
-            _search.removeClass('m_search');
-            _search.show();
-            search_mode = false;
+            // _search.removeClass('m_search');
+            // _search.show();
+            // search_mode = false;
             $('.language').find('ul').hide();
             // 副選單滑出
             liHasChild.on({
@@ -197,24 +199,24 @@ $(function() {
     });
     mobileMenu();
     // 行動版查詢
-    var _searchCtrl = $('.searchCtrl');
-    $('.m_search').hide();
-    _searchCtrl.off().on('click', function(e) {
-        if (!search_mode) {
-            $('.m_search').stop(true, false).slideDown('400', 'easeOutQuint');
-            _window.off('resize');
-            // $('.m_search').find('input[type="text"]').focus();
-            search_mode = true;
-        } else {
-            $('.m_search').hide();
-            search_mode = false;
-        }
-    });
+    // var _searchCtrl = $('.searchCtrl');
+    // $('.m_search').hide();
+    // _searchCtrl.off().on('click', function(e) {
+    //     if (!search_mode) {
+    //         $('.m_search').stop(true, false).slideDown('400', 'easeOutQuint');
+    //         _window.off('resize');
+    //         // $('.m_search').find('input[type="text"]').focus();
+    //         search_mode = true;
+    //     } else {
+    //         $('.m_search').hide();
+    //         search_mode = false;
+    //     }
+    // });
     // 如果點在外面
-    $('.main').off().on('click touchend', function(e) {
-        $('.m_search').hide();
-        search_mode = false;
-    });
+    // $('.main').off().on('click touchend', function(e) {
+    //     $('.m_search').hide();
+    //     search_mode = false;
+    // });
     // 固定版頭
     hh = Math.floor($('.header').outerHeight(true));
     if ($('header').has('menu')) {
@@ -226,7 +228,7 @@ $(function() {
             ww = _window.outerWidth();
             if (ww >= wwSmall && $(this).scrollTop() > stickyMenuTop) {
                 $('.header').addClass('fixed');
-                $('.header').css('margin-top', menuH - hh);
+                $('.header').css('margin-top', menuH - hh + 24);
                 $('.main').css('margin-top', hh);
             } else {
                 $('.header').removeClass('fixed');

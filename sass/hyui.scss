@@ -18,6 +18,7 @@
 @import "sass/_tabs";					//頁籤
 @import "sass/_table";					//表格
 @import "sass/_form";					//表單
+@import "sass/_btn";					//按鈕設定
 @import "sass/_icon";					//圖示
 @import "sass/_element";				//小元素
 
@@ -26,8 +27,8 @@
 @import "sass/_language";				//語言選單
 @import "sass/_menu";					//menu
 @import "sass/_footer";					//footer
-@import "sass/_fatfooter";				//fatfooter
-@import "sass/_fixed_sidebar";			//固定側邊欄
+// @import "sass/_fatfooter";				//fatfooter
+// @import "sass/_fixed_sidebar";			//固定側邊欄
 @import "sass/_function";				//function功能區塊
 @import "sass/_modal";					//pop視窗
 @import "sass/_marquee";				//跑馬燈
@@ -43,6 +44,7 @@
 
 // 頁面
 @import "page/_template";				//版型初始設定
+@import "page/_login";			     	//login
 @import "page/_mp";						//首頁
 @import "page/_lp";						//LP
 @import "page/_np";						//NP
@@ -50,6 +52,7 @@
 @import "page/_fp";						//Forward
 @import "page/_qp";						//QP
 @import "page/_sitemap";				//Sitemap
+@import "page/_sp";						//SP
 
 // 外掛
 @import "sass/_slick";					//slick
