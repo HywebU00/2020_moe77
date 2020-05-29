@@ -122,6 +122,18 @@ $(function() {
         focusOnSelect: true,
         infinite: true
     });
+
+    // tab 裡面的開合表單
+    // 預設全展開、不然 tab 高度撐不開
+    $('.fill_in > h3.title').click(function(){
+        if($(this).hasClass('closed')){
+            $(this).removeClass('closed');
+            $(this).next('section').stop(true, false).slideDown(600);
+        }else{
+            $(this).addClass('closed');
+            $(this).next('section').stop(true, false).slideUp(600);
+        }
+    });
     
 
     // 案件初審

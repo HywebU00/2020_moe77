@@ -80,20 +80,24 @@
             <!-- <a class="accesskey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a> -->
             <div class="container">
                 <h2 class="title">文章標題</h2>
-                <button type="button" class="btn newAdd">新增計畫申請</button>
+                <input type="button" class="btn btn-addition btn-position" id="openModal" value="新增計畫申請">
                 <!-- 篩選條件 ＋search -->
                 <section class="flex">
                     <!-- tag 文章標籤 -->
                     <div class="tag">
                         <ul>
+                            <li><a href="#" class="all checked">全部</a></li>
                             <li><a href="#" class="processing">待審核</a></li>
                             <li><a href="#" class="addition">待補件</a></li>
                             <li><a href="#" class="reject">審核不通過</a></li>
                             <li><a href="#" class="pass">審核通過</a></li>
                             <li><a href="#" class="draft">草稿</a></li>
-                            <li><a href="#" class="num checked">待審核<span>8</span></a></li>
-                            <li><a href="#" class="num">審核不通過<span>12</span></a></li>
-                            <li><a href="#" class="num">審核截止警告<span>12</span></a></li>
+                            <!-- <li><a href="#" class="all checked">全部<span>8</span></a></li>
+                            <li><a href="#" class="processing">待審核<span>8</span></a></li>
+                            <li><a href="#" class="addition">待補件<span>8</span></a></li>
+                            <li><a href="#" class="reject warning">審核不通過<span>8</span></a></li>
+                            <li><a href="#" class="pass">審核通過<span>8</span></a></li>
+                            <li><a href="#" class="draft">草稿<span>8</span></a></li> -->
                         </ul>
                     </div>
                     <!-- Search Start -->

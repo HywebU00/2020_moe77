@@ -185,7 +185,7 @@ select::-ms-expand {
             }
         }
         // 綜合表單-欄位數
-        &.mix-one-col{
+        &.mix-1-col{
             width: 100%;
             .form_grp{
                 width: calc( 100% / 1 - 6px); 
@@ -195,8 +195,10 @@ select::-ms-expand {
                 }
             }
         }
-        &.mix-two-col{
-            width: 100%;
+        &.mix-2-col{
+            input[type="text"], select {
+                min-width: calc( 100% / 2 - 6px);
+            }
             .form_grp{
                 width: calc( 100% / 2 - 6px); 
                 input[type="text"]{
@@ -205,34 +207,56 @@ select::-ms-expand {
                 }
             }
         }
-        &.mix-three-col{
+        &.mix-3-col{
+            // width: 100%;
+
             input[type="text"], select {
                 min-width: calc( 100% / 3 - 6px);
             }
             .form_grp{
-                width: calc( 100% / 3 - 6px); 
+                width: calc( 100% / 3 - 6px);
+                display: inline-block;
+                text-align: left;
+                
+                &:last-child{
+                    // border-bottom: 1px dashed #DDD !important;
+                    margin-bottom: .2em !important;
+                }
+
+                label{
+                    display: block !important;
+                    // text-align: left;
+                }
                 input[type="text"]{
                     width: calc( 100% - 2em);
                     +span{ margin-left: .4em; }
                 }
+
             }
         }
-        &.mix-four-col{
+        &.mix-4-col{
             width: 100%;
             .form_grp{
                 width: calc( 100% / 4 - 6px); 
-                label{ display: block !important; }
+                display: inline-block;
+                label{
+                    display: block !important;
+                    text-align: left;
+                }
                 input[type="text"]{
                     width: calc( 100% - 2em);
                     +span{ margin-left: .4em; }
                 }
             }
         }
-        &.mix-space-col{
+        &.mix-float-col{
             width: 100%;
             .form_grp{
                 width: auto; 
-                margin-right: 1.25em;
+                display: inline-block;
+                // margin-right: 1.25em;
+                margin-right: .4em;
+                >span{ margin-right: .4em; }
                 input[type="text"]{
                     min-width: auto;
                     width: 120px;
@@ -355,18 +379,67 @@ select::-ms-expand {
     }
 
     // 共同執行單位#1 表單
-    .fill_in{
-        background: #f5f5f5;
-        padding: 0 2em 1em;
-        margin: 1em 0;
-        h4{
-            background: $primaryColor;
-            color: #fff;
-            padding: 1em 2em;
-            margin: 0 -2em;
-            cursor: pointer;
+    // .fill_in{
+    //     background: #fbfbfb;
+    //     padding: 0 2em 1em;
+    //     margin: 1em 0;
+    //     h4{
+    //         background: $primaryColor;
+    //         color: #fff;
+    //         padding: 1em 2em;
+    //         margin: 0 -2em;
+    //         cursor: pointer;
+    //     }
+    // }
+}
+
+// 共同執行單位#1 表單
+.fill_in{
+    background: #fbfbfb;
+    padding: 0 2em 0;
+
+    &:first-child{ margin: 1em 0; }
+    margin: .5em 0 0;
+
+    h3.title{
+        background: $primaryColor;
+        color: #fff;
+        padding: 1em 2em;
+        margin: 0 -1.7em;
+        cursor: pointer;
+
+        position: relative;
+
+        &:before, &:after{
+            content:"";
+            position: absolute;
+            background: #fff;
+
+            transform: rotate(225deg);
+            transition: transform .6s ease;
+        }
+
+        &:before{
+            content:"";
+            width: 26px;
+            height: 2px;
+            right: 1.5em;
+            top: calc(50% - 1px);
+        }
+        &:after{
+            content:"";
+            width: 2px;
+            height: 26px;
+            right: calc( 1.5em + 13px);
+            top: calc(50% - 13px);
+        }
+        &.closed{
+            &:before, &:after{
+                transform: rotate(0deg);
+            }
         }
     }
+    section{}
 }
 
 // 非一般表單、不是label＋.form_content 的組合
@@ -375,6 +448,7 @@ select::-ms-expand {
     // padding: 0 1.5em;
     padding: 0 .15em;
     margin-bottom: .5em;
+
     h3.title{
         color: #fff;
         cursor: pointer;
@@ -415,53 +489,58 @@ select::-ms-expand {
         }
     }
     section{
-        // display: none;
+        display: none;
         background: #fff;
         padding: .5em 1.5em;
         border-bottom: solid 2px $primaryColor;
+
+        table{ margin: .75em 0; }
     }
     form{
-        &.form_grid{
-            border-top: none;
-            margin: 0;
-            &.form_inline{
-                label{
-                    .form_grp{ display: block;  }
-                }
-            }
-            .form_grp{
-                width: calc(100% / 3 - 12px);
-                border-bottom: none;
-                padding: 1.5em 0 0;
-                .form_content{
-                    label{ display: block; }
-                    input, select{ width: 100%; }
-                    width: 100%;
-                    padding: 2px;
-
-                    &.combine input,
-                    .datepick{
-                        width: calc(100% / 2 - 12px);
+        &.form_grid{ border-top: none; }
+        &.mix-3-col{
+            &.form_grid{
+                border-top: none;
+                margin: 0;
+                &.form_inline{
+                    label{
+                        .form_grp{ display: block;  }
                     }
                 }
+                .form_grp{
+                    width: calc(100% / 3 - 12px);
+                    border-bottom: none;
+                    padding: 1.5em 0 0;
+                    .form_content{
+                        label{ display: block; }
+                        input, select{ width: 100%; }
+                        width: 100%;
+                        padding: 2px;
 
-                @include screen('tablet') {
-                    width: calc(100% / 2 - 12px);
-                    .form_content{
-                        &.combine input{ width: calc(100% / 2 - 4px); }
-                        .datepick{ width: calc(100% / 2 - 8px); }
-                    }
-                }
-                @include screen('mobile') {
-                    width: 100%;
-                    .form_content{
                         &.combine input,
-                        .datepick{ width: 100%; }
+                        .datepick{
+                            width: calc(100% / 2 - 12px);
+                        }
+                    }
+
+                    @include screen('tablet') {
+                        width: calc(100% / 2 - 12px);
+                        .form_content{
+                            &.combine input{ width: calc(100% / 2 - 4px); }
+                            .datepick{ width: calc(100% / 2 - 8px); }
+                        }
+                    }
+                    @include screen('mobile') {
+                        width: 100%;
+                        .form_content{
+                            &.combine input,
+                            .datepick{ width: 100%; }
+                        }
                     }
                 }
             }
-            .btn_grp{ display: block; }
         }
+        .btn_grp{ display: block !important; }
     }
     dl{
         display: flex;
@@ -767,7 +846,9 @@ input[type="radio"]:checked {
 }
 //---------------------------------------------readonly disable -------//
 input[readonly],
-input[disable] {
+input[disable],
+textarea[readonly],
+textarea[disable]{
     background: lighten($color-gray, 15);
     color: darken($color-gray, 10);
     border-color: darken($color-gray, 10);

@@ -116,41 +116,57 @@ div.tag {
                 border: 1px solid #DDD;
                 padding: .4em 1em;
 
+				&.all{}
                 &.processing{}
                 &.addition{}
                 &.reject{}
                 &.pass{}
                 &.draft{}
-                &.num{}
+                // &.num{}
 
-                &.num{
-                	span{
-                		display: inline-block;
-                		margin-left: .25em;
-                		background: $primaryColor;
-                		color: #fff;
-                		width: 24px;
-                		text-align: center;
-                		border-radius: 50%;
-                		font-weight: bold;
-                	}
+                // &.num{
+                // 	span{
+                // 		display: inline-block;
+                // 		margin-left: .25em;
+                // 		background: $primaryColor;
+                // 		color: #fff;
+                // 		width: 24px;
+                // 		text-align: center;
+                // 		border-radius: 50%;
+                // 		font-weight: bold;
+                // 	}
 
-                	&.checked{
-                		background: url(../images/icon/icon_check_white.svg) .75em 50% no-repeat, $primaryColor;
-                		background-size: 16px 16px;
-                		color: #fff !important;
-                		box-shadow: inset 0px 0px 2px 0px darken($primaryColor,15);
-                		padding-left: 2.5em;
-                		span{
-                			background: #fff;
-                			color: $primaryColor;
-                		}
-                	}
+                // 	&.warning{
+                // 		color: #fff;
+                // 		background: #9e170e;
+                // 		span{ color: #9e170e; background: #fff; }
+                // 		&:hover, &:focus{
+                // 			color: #fff;
+                // 		}
 
-                	&:hover, &:focus{
-                		color: $primaryColor;
-                	}
-                }
+                // 		&.checked{
+                // 			background: url(../images/icon/icon_check_white.svg) .75em 50% no-repeat, #9e170e;
+                // 			background-size: 16px 16px;
+                // 			span{ color: #9e170e; }
+                // 		}
+                // 	}
+
+                // 	&.checked{
+                // 		background: url(../images/icon/icon_check_white.svg) .75em 50% no-repeat, $primaryColor;
+                // 		background-size: 16px 16px;
+                // 		color: #fff !important;
+                // 		box-shadow: inset 0px 0px 2px 0px darken($primaryColor,15);
+                // 		padding-left: 2.5em;
+                // 		span{
+                // 			background: #fff;
+                // 			color: $primaryColor;
+                // 		}
+                // 	}
+
+                // 	&:hover, &:focus{
+                // 		color: $primaryColor;
+                // 	}
+                // }
 
 
                 &:hover,&:focus {
@@ -162,9 +178,31 @@ div.tag {
 }
 
 
-.processing, .addition, .reject, .pass, .draft{
+.all, .processing, .addition, .reject, .pass, .draft{
+	span{
+		display: inline-block;
+		margin-left: .25em;
+		background: $primaryColor;
+		color: #fff;
+		width: 24px;
+		text-align: center;
+		border-radius: 50%;
+		font-weight: bold;
+	}
 	&.checked{
 		padding-left: 2.5em;
+		span{
+			background: #fff;
+			color: #666;
+		}
+	}
+}
+
+.all{
+	&.checked{
+		background: url(../images/icon/icon_check_white.svg) .75em 50% no-repeat, #545454;
+		background-size: 16px 16px;
+		color: #fff !important;
 	}
 }
 .processing{
@@ -176,12 +214,13 @@ div.tag {
 }
 .addition{
 	&.checked{
-		background: url(../images/icon/icon_check_white.svg) .75em 50% no-repeat, #ffc107;
+		background: url(../images/icon/icon_check_black.svg) .75em 50% no-repeat, #ffc107;
 		background-size: 16px 16px;
 		color: #222 !important;
 	}
 }
 .reject{
+	color: #9e170e !important;
 	&.checked{
 		background: url(../images/icon/icon_check_white.svg) .75em 50% no-repeat, #9e170e;
 		background-size: 16px 16px;
@@ -197,12 +236,11 @@ div.tag {
 }
 .draft{
 	&.checked{
-		background: url(../images/icon/icon_check_white.svg) .75em 50% no-repeat,  #ddd;
+		background: url(../images/icon/icon_check_black.svg) .75em 50% no-repeat,  #ddd;
 		background-size: 16px 16px;
 		color: #222 !important;
 	}
 }
-.num{}
 
 td{
 	span{
@@ -215,6 +253,31 @@ td{
 		.reject,
 		.pass,
 		.draft{}
+	}
+
+	.processing, .addition, .reject, .pass, .draft{
+		padding: .25em .5em;
+		font-size: .9em;
+	}
+	.processing{
+		background: $primaryColor;
+		color: #fff !important;
+	}
+	.addition{
+		background: #ffc107;
+		color: #222 !important;
+	}
+	.reject{
+		background: #9e170e;
+		color: #fff !important;
+	}
+	.pass{
+		background:#229622;
+		color: #fff !important;
+	}
+	.draft{
+		background: #ddd;
+		color: #222 !important;
 	}
 }
 
@@ -423,7 +486,10 @@ div.tag,
 
 	.tag{ flex: 1 1 70%; }
 	.search{ flex: 1 1 30%; }
-	.btn_grp{ flex: 1 1 auto; padding: 0 0; }
+	.btn_grp{
+		// flex: 1 1 auto;
+		padding: 0 0;
+	}
 
 	// div{ flex: 1 1 50%; }
 
@@ -435,8 +501,6 @@ div.tag,
 		}
 	}
 }
-
-
 
 // 管理端
 .Manage{
@@ -471,7 +535,36 @@ div.tag,
 	}
 }
 
+// 資金
+section.funds{
+	display: flex;
+	flex-flow: row wrap;
+	border-bottom: none;
+	padding: .75em 0;
+	div{
+		flex: 1 1 auto;
+		box-shadow: inset 1px 0px 0px 0px rgba(0,0,0,0.25);
+		padding: 0 1.5em;
+		&:first-child{ box-shadow: none; }
+		p{
+			margin: 0;
+			b{ color: $primaryColor; }
+			&.value{
+				margin-bottom: .5em;
+			}
+		}
+	}
+}
 
+// 
+.project{
+	ul{
+		li{
+			padding: .5em 0;
+			b{ color: $primaryColor; }
+		}
+	}
+}
 
 
 

@@ -1,37 +1,76 @@
 .modal {
     position: fixed;
     display: none;
-    width: 400px;
-    height: 300px;
+    width: 90%;
+    height: 90%;
     background: #FFF;
     z-index: 99999999;
     top: 5%;
     left: 50%;
-    margin-left: -200px;
-    padding: 1em 1em 1em;
+    margin-left: -45%;
+    padding: 3em 1em 1em;
     @include box-sizing;
     border-radius:8px;
     box-shadow:1px 1px 15px RGBA(0, 0, 0, .5);
     animation: scaleUp .5s ease-out;
+
+    overflow: scroll;
+    span{ display: inline-block; color: $primaryColor; }
+
     h2 {
         border-bottom: 1px solid $primaryColor;
         padding-bottom: .5em;
+        margin-bottom: .5em;
+        span{
+            background: $primaryColor;
+            color: #fff;
+            margin-left: .5em;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+        }
     }
     .close {
         position: absolute;
         top: 5px;
-        right: 5px;
-        width: 30px !important;
+        right: 16px;
+        width: 42px !important;
         min-width: auto;
-        height: 30px;
+        height: 42px;
         font-size: 0em;
         border: none;
         display: block;
         padding: 0;
         background: url(../images/basic/icon_close.svg) no-repeat center center;
+        background-size: 20px 20px;
         &:hover, &:focus {
             cursor: pointer;
         }
+    }
+
+    // 跳窗內的內容設定
+    section{ padding-top: 1.5em; }
+    .form_grid{
+        border-top: none;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 0 1em 1.5em;
+        >.form_grp{ padding-bottom: 0; }
+        .form_grp{
+            border-bottom: none !important;
+            .form_content{
+                width: 100%;
+                &.mix-3-col{
+                    border-bottom: none !important;
+                    .form_grp input[type="text"]{ width: 100%; }
+                }
+            }
+        }
+    }
+    table{
+        margin: 1em 0;
+        td{ text-align: center; }
     }
 }
 @keyframes scaleUp {

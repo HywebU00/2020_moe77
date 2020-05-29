@@ -39,16 +39,21 @@ table {
             }
 
             &:before{
-                content: "\f0de";
-                font-family: 'Font Awesome\ 5 Free';
-                font-weight: 900;
-                top: 2px;
+                content: "";
+                width: 12px;
+                height: 12px;
+                background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
+                background-size: contain;
+                top: .5em;
             }
             &:after{
-                content: "\f0dd";
-                font-family: 'Font Awesome\ 5 Free';
-                font-weight: 900;
-                bottom: 2px;
+                content: "";
+                width: 12px;
+                height: 12px;
+                background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
+                bottom: .5em;
+                transform: rotate(180deg);
+                opacity: .4;
             }
 
             &:hover, &:focus{

@@ -2,7 +2,7 @@
 .header {
     position: relative;
     z-index: 99;
-    padding: .75em 0;
+    // padding: .75em 0;
     background: $primaryColor;
     // box-shadow: 0px 2px 5px RGBA(0, 0, 0, .3);
     @extend %clearfix;

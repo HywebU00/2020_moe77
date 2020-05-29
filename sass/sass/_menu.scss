@@ -4,10 +4,12 @@
     min-height: 2.2em;
     position: relative;
     z-index: 99;
+    padding: .5em 0;
     // 預設選單 ul
     clear: both;
     @include screen('mobile') {
         display:none;
+        padding: 0 0;
     }
     >ul {
         text-align: left;
@@ -15,7 +17,7 @@
         padding: 0;
 
         display: flex;
-        flex-flow: row-reverse;
+        flex-flow: row-reverse wrap;
         // 第一層選單樣式
         >li {
             display: inline-block;
@@ -93,6 +95,15 @@
                 top: 0;
                 left: 170px;
                 animation: none;
+            }
+        }
+
+        @include screen('mobile') {
+            >li {
+                flex: auto;
+                &:nth-child(1){ order:1; }
+                &:nth-child(2){ order:2; }
+                &:nth-child(3){ order:3; }
             }
         }
     }
@@ -309,6 +320,20 @@
                         }
                     }
                 }
+            }
+        }
+
+        p.user{
+            color: #fff;
+            padding: 0 1em;
+            a{
+                display: block;
+                padding: .5em 0;
+                text-align: center;
+                background: rgba(255,255,255,.5);
+                margin: 1em 0;
+                color: #222;
+                border-radius: 4px;
             }
         }
     }

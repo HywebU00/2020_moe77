@@ -219,8 +219,8 @@ $(function() {
     // });
     // 固定版頭
     hh = Math.floor($('.header').outerHeight(true));
-    if ($('header').has('menu')) {
-        var stickyMenuTop = Math.floor($('.header .menu').offset().top);
+    if ($('header .menu').length > 0) {
+        var stickyMenuTop = Math.floor($('header .menu').offset().top);
         console.log(stickyMenuTop);
         hh = Math.floor($('.header').outerHeight(true));
         menuH = Math.floor(_menu.outerHeight(true));
@@ -228,7 +228,7 @@ $(function() {
             ww = _window.outerWidth();
             if (ww >= wwSmall && $(this).scrollTop() > stickyMenuTop) {
                 $('.header').addClass('fixed');
-                $('.header').css('margin-top', menuH - hh + 24);
+                $('.header').css('margin-top', menuH - hh);
                 $('.main').css('margin-top', hh);
             } else {
                 $('.header').removeClass('fixed');
@@ -265,18 +265,18 @@ $(function() {
     /*-----------------------------------*/
     /////////////fatfooter開關/////////////
     /*-----------------------------------*/
-    $('.btn-fatfooter').click(function(e) {
-        $(this).parent('.container').find('nav>ul>li>ul').stop(true, true).slideToggle(function() {
-            if ($(this).is(':visible')) {
-                $('.btn-fatfooter').html("收合/CLOSE");
-                $('.btn-fatfooter').attr('name', '收合選單/CLOSE');
-            } else {
-                $('.btn-fatfooter').html("展開/OPEN");
-                $('.btn-fatfooter').attr('name', '展開選單/OPEN');
-            }
-        });
-        $(this).stop(true, true).toggleClass('close');
-    });
+    // $('.btn-fatfooter').click(function(e) {
+    //     $(this).parent('.container').find('nav>ul>li>ul').stop(true, true).slideToggle(function() {
+    //         if ($(this).is(':visible')) {
+    //             $('.btn-fatfooter').html("收合/CLOSE");
+    //             $('.btn-fatfooter').attr('name', '收合選單/CLOSE');
+    //         } else {
+    //             $('.btn-fatfooter').html("展開/OPEN");
+    //             $('.btn-fatfooter').attr('name', '展開選單/OPEN');
+    //         }
+    //     });
+    //     $(this).stop(true, true).toggleClass('close');
+    // });
     /*-----------------------------------*/
     //////////////相簿燈箱//////////////
     /*-----------------------------------*/
@@ -538,25 +538,25 @@ $(function() {
     /*------------------------------------*/
     /////////////字型大小 font-size//////////
     /*------------------------------------*/
-    $('.font_size').find('.medium').addClass('active');
-    $('.font_size').find('.small').click(function(e) {
-        $(this).parent('li').siblings('li').find('a').removeClass('active');
-        $('.cp').removeClass('large_size').addClass('small_size');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-    $('.font_size').find('.medium').click(function(e) {
-        $(this).parent('li').siblings('li').find('a').removeClass('active');
-        $('.cp').removeClass('large_size small_size');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-    $('.font_size').find('.large').click(function(e) {
-        $(this).parent('li').siblings('li').find('a').removeClass('active');
-        $('.cp').removeClass('small_size').addClass('large_size');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
+    // $('.font_size').find('.medium').addClass('active');
+    // $('.font_size').find('.small').click(function(e) {
+    //     $(this).parent('li').siblings('li').find('a').removeClass('active');
+    //     $('.cp').removeClass('large_size').addClass('small_size');
+    //     $(this).addClass('active');
+    //     e.preventDefault();
+    // });
+    // $('.font_size').find('.medium').click(function(e) {
+    //     $(this).parent('li').siblings('li').find('a').removeClass('active');
+    //     $('.cp').removeClass('large_size small_size');
+    //     $(this).addClass('active');
+    //     e.preventDefault();
+    // });
+    // $('.font_size').find('.large').click(function(e) {
+    //     $(this).parent('li').siblings('li').find('a').removeClass('active');
+    //     $('.cp').removeClass('small_size').addClass('large_size');
+    //     $(this).addClass('active');
+    //     e.preventDefault();
+    // });
     /*-----------------------------------*/
     /////////// category active  //////////
     /*-----------------------------------*/
@@ -717,4 +717,31 @@ $(function() {
             threshold: 0
         });
     }
+
+    /*-----------------------------------*/
+    /////////////modal設定/////////////
+    /*-----------------------------------*/
+    $(function() {
+        $('#modal1').hide();                                                                //先隱藏視窗
+        $('.modal').after('<div class="modal_overlay"></div>');                             //新增透明底
+        $('.modal').prepend('<button type="button" class="close">關閉</button>');           //新增關閉按鈕
+        $('.modal_overlay').hide();                                                         //隱藏透明底
+        //按鈕動作
+        $('#openModal').click(function(e) {
+            $('.modal_overlay').fadeIn(100);
+            $('.modal').fadeIn(100);
+            $('body').addClass('noscroll');
+            e.preventDefault();
+        });
+        //關閉function
+        function closeModal(){
+            $('#modal1').hide();
+            $('.modal_overlay').hide();
+            $('body').removeClass('noscroll');
+        }
+        //點選關閉按鈕及透明底都可關閉
+        $('.modal_overlay').click(closeModal);
+        $('.modal .close').click(closeModal);
+
+    });
 });
