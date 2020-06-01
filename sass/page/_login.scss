@@ -2,8 +2,18 @@
 // login 首頁區塊設定
 #login{
     // background: $primaryColor;
-    background: url(../images/bg-login.jpg) 50% top no-repeat, #3d83b8;
-    background-size: cover;
+    background: url(../images/bg-login-hand.png) right 8% top 0 no-repeat,#3d83b8;
+    // background-size: cover;
+
+    @include screen('notebook') {
+        background: url(../images/bg-login-hand.png) right -8% top 0 no-repeat,#3d83b8;
+    }
+    @include screen('tablet') {
+        background: url(../images/bg-login-hand.png) right -50% top 0 no-repeat,#3d83b8;
+    }
+    @include screen('mobile') {
+        background: #3d83b8;
+    }
 
     .container{ max-width: 1000px; }
 
@@ -16,8 +26,8 @@
 
         a.back{ padding: .75em 2em; }
 
-        @include screen('mobile') {
-            background: $primaryColor;
+        @include screen('tablet') {
+            background: #3d83b9;
         }
     }
 
@@ -104,6 +114,15 @@
                 padding: .75em .5em .75em 3em;
             }
 
+            [type^="text"]{
+                background: url(../images/icon/icon_user.svg) 10px 50% no-repeat, #fff;
+                background-size: 30px 30px;
+            }
+            [type^="password"]{
+                background: url(../images/icon/icon_locked.svg) 10px 50% no-repeat, #fff;
+                background-size: 30px 30px;
+            }
+
             // .form_grp{
             //     label{ font-size: 1.125em; }
             //     margin-bottom: .75em;
@@ -124,6 +143,7 @@
             // box-shadow: inset 2px 0px 0px 0px #b8d3e8;
             ul{
                 @include li-reset;
+                margin-bottom: 2.5em;
                 li{
                     font-size: 1.5em;
                     line-height: normal;

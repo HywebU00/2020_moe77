@@ -137,9 +137,9 @@ $(function() {
     
 
     // 案件初審
+    // 預設打開某個物件的內容
+    $('.filter_box > h3.title.opened').next('section').css("display","block");
     $('.filter_box > h3.title').click(function(){
-        // alert('有');
-        // $(this).next('section').slideDown(600);
         if($(this).hasClass('opened')){
             $(this).removeClass('opened');
             $(this).next('section').stop(true, false).slideUp(600);
@@ -157,7 +157,5 @@ $(function() {
             $(this).addClass('checked');
         }
     });
-
-
 
 });

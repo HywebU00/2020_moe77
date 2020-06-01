@@ -9,7 +9,7 @@
     @media screen and (max-width: 1000px) {
         padding: .75em 1em;
     }
-    @include screen('mobile') {
+    @include screen('tablet') {
         position: fixed;
         width: 100%;
         padding: .5em 0;
@@ -45,7 +45,7 @@
         border: none;
         box-shadow: none;
         @include box-sizing;
-        @include screen('mobile') {
+        @include screen('tablet') {
             display: block !important;
         }
     }
@@ -109,7 +109,7 @@
             max-width: 300px;
             max-height: 75px;
         }
-        @include screen('mobile') {
+        @include screen('tablet') {
             padding: 2px 60px;
             width: 100%;
             text-align: center;
@@ -140,7 +140,7 @@
             box-shadow: none;
         }
 
-        @include screen('mobile') {
+        @include screen('tablet') {
             display: none;
         }
     }
@@ -167,8 +167,11 @@
             }
         }
 
-        @include screen('tablet'){ margin-right: 0; }
-        @include screen('mobile') { display: none; }
+        @include screen('tablet'){
+            // margin-right: 0;
+            display: none;
+        }
+        // @include screen('mobile') { display: none; }
     }
     // 導覽列
     .navigation {

@@ -486,15 +486,17 @@ select::-ms-expand {
             &:before, &:after{
                 transform: rotate(225deg);
             }
+            +section{}
         }
     }
     section{
         display: none;
         background: #fff;
-        padding: .5em 1.5em;
         border-bottom: solid 2px $primaryColor;
+        padding: .5em 1.5em;
 
         table{ margin: .75em 0; }
+
     }
     form{
         &.form_grid{ border-top: none; }

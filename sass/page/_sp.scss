@@ -533,6 +533,12 @@ div.tag,
 			}
 		}
 	}
+
+	@include screen('mobile') {
+		h2.title{
+			margin: 1em 0;
+		}
+	}
 }
 
 // 資金
