@@ -226,7 +226,7 @@ $(function() {
         menuH = Math.floor(_menu.outerHeight(true));
         $(window).bind("load scroll resize", function(e) {
             ww = _window.outerWidth();
-            if (ww >= wwSmall && $(this).scrollTop() > stickyMenuTop) {
+            if (ww >= wwMedium && $(this).scrollTop() > stickyMenuTop) {
                 $('.header').addClass('fixed');
                 $('.header').css('margin-top', menuH - hh);
                 $('.main').css('margin-top', hh);
