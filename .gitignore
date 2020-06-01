@@ -15,7 +15,6 @@
 *.scss.map
 *.rb
 *.htm
-*拷貝
 # Used by dotenv library to load environment variables.
 # .env
 
