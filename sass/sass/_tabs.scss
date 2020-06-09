@@ -3,6 +3,11 @@
     margin: 1em auto;
     overflow: hidden;
     @extend %clearfix;
+
+    +.btn_grp{
+        border-top: solid 1px #222;
+    }
+
     @include screen('mobile') {
         width: auto;
         height: auto !important;
@@ -58,6 +63,7 @@
 // 顯示content
 .active+.tabContent {
     display: block;
+    padding: 1em .5em;
 }
 .tabContent {
     position: absolute;
@@ -91,4 +97,6 @@
             color: #666;
         }
     }
+
+    .scroltable-wrapper + div{ margin: .75em 0; }
 }

@@ -49,6 +49,9 @@ body {
 .innerpage {
     padding-top: 2em;
     @include screen('tablet') {
+        padding-top: 7em;
+    }
+    @include screen('mobile') {
         padding-top: 5em;
     }
     >.container {

@@ -40,13 +40,31 @@ select::-ms-expand {
                 margin: 0 .5em .5em 0;
             }
         }
+        
+        .form_grp label,
+        .form_grp .form_grp label{
+            font-weight: bold;
+            color: #00589c;
+        }
 
         &:last-child{
-            border-bottom: 0;
+            border-bottom: none;
         }
     }
+
+    section.bundle{
+        // background: #ddd;
+        padding-bottom: 1.75em;
+        .form_grp {
+            &:last-child{
+                border-bottom: none;
+            }
+        }
+    }
+
     >label, .form_title{
-        color: darken($primaryColor, 15);
+        color: #00589c;
+        font-weight: bold;
     }
 
     .form_title {
@@ -54,8 +72,10 @@ select::-ms-expand {
         width: $form_title_width;
         @include gutter();
         padding-top: 5px;
+
         @include screen('mobile') {
             width: 100%;
+            padding-left: 0;
         }
     }
     .form_content {
@@ -64,8 +84,10 @@ select::-ms-expand {
         width: calc(100% - #{$form_title_width});
         @include gutter();
         overflow: hidden;
+
         @include screen('mobile') {
             width: 100%;
+            // @include gutter(0);
         }
         
         &.form_inline {
@@ -242,6 +264,7 @@ select::-ms-expand {
                 label{
                     display: block !important;
                     text-align: left;
+                    font-weight: 500;
                 }
                 input[type="text"]{
                     width: calc( 100% - 2em);
@@ -266,7 +289,7 @@ select::-ms-expand {
         }
         // 
         .follower{
-            width: 200px;
+            width: 180px;
             margin: 0 .75em;
             +span{}
         }
@@ -307,9 +330,39 @@ select::-ms-expand {
             }
         }
 
+                
+        @include screen('mobile') {
+            &.mix-2-col{
+                input[type="text"], select { min-width: 100%; }
+                .form_grp{ width: 100%; }
+            }
+            &.mix-3-col{
+                input[type="text"], select { min-width: 100%; }
+                .form_grp{ width: 100%; }
+            }
+            &.mix-4-col{
+                .form_grp{ width: 100%; }
+            }
+            &.mix-float-col{
+                .form_grp{
+                    width: 100%;
+                    input[type="text"]{
+                        width: 50%;
+                        display: inline-block;
+                    }
+                }
+            }
+
+            .follower{
+                width: calc(100% - 90px);
+                margin: .5em .75em .5em 2em;
+            }
+        }
+
         // 日期專屬
         .datepick {
-            padding-right: .5em;
+            // padding-right: .5em;
+            margin-right: 12px;
             position: relative;
             display: inline-block;
             @include screen('xs_mobile') {
@@ -325,7 +378,7 @@ select::-ms-expand {
                     font-size: 1.5em;
                     display: inline-block;
                     position: absolute;
-                    left: -.65em;
+                    left: -16px;
                     top: .3em;
                     color: #777;
                 }
@@ -443,6 +496,13 @@ select::-ms-expand {
 }
 
 // 非一般表單、不是label＋.form_content 的組合
+h4.title{
+    color: #0062ad;
+    font-size: larger;
+    padding-left: 1em;
+    border-left: solid 4px #0062ad;
+}
+
 .filter_box{
     background: $primaryColor;
     // padding: 0 1.5em;
@@ -489,14 +549,25 @@ select::-ms-expand {
             +section{}
         }
     }
+    // h4.title{
+    //     color: #0062ad;
+    //     font-size: larger;
+    //     padding-left: 1em;
+    //     border-left: solid 4px #0062ad;
+    // }
+
     section{
-        display: none;
+        // display: none;
         background: #fff;
         border-bottom: solid 2px $primaryColor;
-        padding: .5em 1.5em;
+        padding: 2em 1.5em;
 
-        table{ margin: .75em 0; }
+        // table{ margin: .75em 0; }
 
+        section{
+            padding: 0;
+            border-bottom: 0;
+        }
     }
     form{
         &.form_grid{ border-top: none; }
@@ -514,7 +585,11 @@ select::-ms-expand {
                     border-bottom: none;
                     padding: 1.5em 0 0;
                     .form_content{
-                        label{ display: block; }
+                        label{
+                            display: block;
+                            font-weight: bold;
+                            color: #00589c;
+                        }
                         input, select{ width: 100%; }
                         width: 100%;
                         padding: 2px;
@@ -529,14 +604,17 @@ select::-ms-expand {
                         width: calc(100% / 2 - 12px);
                         .form_content{
                             &.combine input{ width: calc(100% / 2 - 4px); }
-                            .datepick{ width: calc(100% / 2 - 8px); }
+                            // .datepick{ width: calc(100% / 2 - 8px); }
                         }
                     }
                     @include screen('mobile') {
                         width: 100%;
                         .form_content{
                             &.combine input,
-                            .datepick{ width: 100%; }
+                            .datepick{
+                                width: 100%;
+                                +.datepick { margin-left: 0; }
+                            }
                         }
                     }
                 }
@@ -555,6 +633,10 @@ select::-ms-expand {
         dd{
             margin-inline-start: 0;
         }
+    }
+
+    +section{
+        margin-top: 2em;
     }
     
     // 附件
@@ -666,6 +748,10 @@ form {
         textarea {
             width: auto;
             display: inline-block;
+        }
+
+        select{
+            padding: 0 1.25em;
         }
         .form_grp,
         .check_grp,
@@ -791,7 +877,7 @@ select {
     height: 2.4em;
     padding: 0 24px 0 .5em;
     border: 1px solid $color-gray;
-    background: #fff url(../images/icon/icon_select_arrow.png) no-repeat right center;
+    background: #fff url(../images/icon/icon_select_arrow.png) no-repeat right 10px center;
     background-size: 16px;
     option {
         outline: none;
@@ -824,12 +910,23 @@ input[type="radio"] {
 input[type="radio"] {
     border-radius: 50%;
 }
-input[type="checkbox"]:checked, input[type="checkbox"]:focus,
-input[type="radio"]:checked, input[type="radio"]:focus {
+// input[type="checkbox"]:checked, input[type="checkbox"]:focus,
+// input[type="radio"]:checked, input[type="radio"]:focus {
+//     border-color: $form-focus;
+//     background-color: $form-focus;
+//     outline: none;
+// }
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
     border-color: $form-focus;
     background-color: $form-focus;
     outline: none;
 }
+input[type="checkbox"]:focus, input[type="radio"]:focus{
+    outline: none;
+    border: 2px solid $color-gray;
+}
+
 input[type="checkbox"]:checked {
     background-image: url(../images/basic/icon_checked.svg);
     background-repeat: no-repeat;

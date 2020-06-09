@@ -138,6 +138,7 @@ $(function() {
 
     // 案件初審
     // 預設打開某個物件的內容
+    $('.filter_box > h3.title').next('section').css("display","none");
     $('.filter_box > h3.title.opened').next('section').css("display","block");
     $('.filter_box > h3.title').click(function(){
         if($(this).hasClass('opened')){
@@ -157,5 +158,14 @@ $(function() {
             $(this).addClass('checked');
         }
     });
+
+    // sort
+    $('.scroltable th.sort').click(function(){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+        }else{
+            $(this).addClass('active');
+        }
+    })
 
 });

@@ -32,6 +32,8 @@ table {
             &:before, &:after{
                 position: absolute;
                 right: 1em;
+                width: 12px;
+                height: 12px;
             }
 
             @include screen('tablet') {
@@ -40,16 +42,12 @@ table {
 
             &:before{
                 content: "";
-                width: 12px;
-                height: 12px;
                 background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
                 background-size: contain;
                 top: .5em;
             }
             &:after{
                 content: "";
-                width: 12px;
-                height: 12px;
                 background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
                 bottom: .5em;
                 transform: rotate(180deg);
@@ -58,6 +56,15 @@ table {
 
             &:hover, &:focus{
                 cursor: pointer;
+            }
+
+            &.active{
+                &:before{
+                    opacity: .4;
+                }
+                &:after{
+                    opacity: 1;
+                }
             }
         }
     }
