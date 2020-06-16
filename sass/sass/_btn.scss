@@ -166,8 +166,8 @@ $btn-radius: 60px;
 
 
 
-input[readonly]{
-    &.btn-primary, &.btn-secondary, &.btn-normal{
+input[readonly], input[disabled]{
+    &.btn-primary, &.btn-secondary, &.btn-normal, &.btn-addition{
         text-shadow: none;
         cursor: not-allowed !important;
         opacity: 50%;
@@ -189,6 +189,8 @@ input[readonly]{
             color: #65656E !important;
         }
     }
+
+    &.btn-addition{}
 }
 
 
