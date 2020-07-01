@@ -158,6 +158,9 @@ $(function() {
             $(this).addClass('checked');
         }
     });
+    $(".tag a").click(function(){
+        $('.tag a.checked').not(this).removeClass('checked');
+     })
 
     // sort
     $('.scroltable th.sort').click(function(){

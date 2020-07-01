@@ -164,6 +164,17 @@ $btn-radius: 60px;
     }
 }
 
+// 返回
+.btn-back{
+    background: #555 !important;
+    color: #fff !important;
+    border: 1px solid #ddd !important;
+    &:hover,
+    &:focus {
+        background: darken($primaryColor, 10) !important;
+    }
+}
+
 
 
 input[readonly], input[disabled]{
