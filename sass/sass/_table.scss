@@ -34,6 +34,9 @@ table {
                 right: 1em;
                 width: 12px;
                 height: 12px;
+
+                background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
+                opacity: .4;
             }
 
             @include screen('tablet') {
@@ -42,30 +45,37 @@ table {
 
             &:before{
                 content: "";
-                background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
+                // background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
                 background-size: contain;
                 top: .5em;
             }
             &:after{
                 content: "";
-                background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
+                // background: url(../images/icon/icon_sort_black.svg) 50% 50% no-repeat;
                 bottom: .5em;
                 transform: rotate(180deg);
-                opacity: .4;
+                // opacity: .4;
             }
 
             &:hover, &:focus{
                 cursor: pointer;
             }
 
-            &.active{
-                &:before{
-                    opacity: .4;
-                }
-                &:after{
-                    opacity: 1;
-                }
+            &.up{
+                &:before{ opacity: 1; }
             }
+            &.down{
+                &:after{ opacity: 1; }
+            }
+
+            // &.active{
+            //     &:before{
+            //         opacity: .4;
+            //     }
+            //     &:after{
+            //         opacity: 1;
+            //     }
+            // }
         }
     }
     &.table_hover {

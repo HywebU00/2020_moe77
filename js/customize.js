@@ -163,12 +163,12 @@ $(function() {
      })
 
     // sort
-    $('.scroltable th.sort').click(function(){
-        if($(this).hasClass('active')){
-            $(this).removeClass('active');
-        }else{
-            $(this).addClass('active');
-        }
-    })
+    // $('.scroltable th.sort').click(function(){
+    //     if($(this).hasClass('active')){
+    //         $(this).removeClass('active');
+    //     }else{
+    //         $(this).addClass('active');
+    //     }
+    // })
 
 });
