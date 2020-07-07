@@ -215,6 +215,11 @@ button[disabled],
 html input[disabled] {
     cursor: default;
 }
+html input[disabled] {
+    border: transparent;
+    background: #ccc       
+}
+
 button::-moz-focus-inner,
 input::-moz-focus-inner {
     border: 0;
