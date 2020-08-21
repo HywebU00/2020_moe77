@@ -64,6 +64,28 @@
 .active+.tabContent {
     display: block;
     padding: 1em .5em;
+
+    >h3{
+        font-size: 1.5em;
+        color: #444;
+
+        &:before{ margin-right: .5em; }
+        &:after{ margin-left: .5em; }
+
+        &:before,
+        &:after{
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: #444;
+            vertical-align: middle;
+        }
+
+        @include screen('mobile') {
+            text-align: center;
+        }
+    }
 }
 .tabContent {
     position: absolute;

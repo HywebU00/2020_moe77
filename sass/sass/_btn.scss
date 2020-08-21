@@ -63,22 +63,41 @@ $btn-radius: 60px;
         outline: none;
     }
 
-    
-    // 新增
-    &.btn-addition{
+    &.btn-addition,
+    &.btn-branch,
+    &.btn-export{
         border-radius: 4px !important;
-        background: url(../images/icon/icon_add_white.svg) right .75em top 50% no-repeat,#555 !important;
-        background-size: 18px 18px !important;
         border: none !important;
         color: #fff;
         padding-right: 50px;
-        margin: .75em 0;
+        margin: .25em 0 0;
+    }
+
+    
+    // 新增
+    &.btn-addition{
+        background: url(../images/icon/icon_add_white.svg) right .75em top 50% no-repeat,#555 !important;
+        background-size: 18px 18px !important;
         &:hover,
         &:focus{
             // color: darken(#65656E, 15) !important;
             // background: #c3c3c3 !important;
         }
     }
+
+    // 分派
+    &.btn-branch{
+        background: url(../images/icon/icon_branch_white.svg) right .75em top 50% no-repeat,#555 !important;
+        background-size: 18px 18px !important;
+    }
+    // 匯出
+    &.btn-export{
+        background: url(../images/icon/icon_export_white.svg) right .75em top 50% no-repeat,#555 !important;
+        background-size: 18px 18px !important;
+    }
+
+
+
     // 新增計畫 的 位置設定
     &.btn-position{
         position: absolute;

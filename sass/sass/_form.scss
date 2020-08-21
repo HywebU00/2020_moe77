@@ -20,7 +20,13 @@ select::-ms-expand {
 
 .notic{
     color: red;
-    padding: .75em 0;
+    padding: .25em 0;
+    &.uncheck{
+        color: #4e4e4e;
+    }
+    &.checked{
+        color: green;
+    }
 }
 
 .form_grid {
@@ -45,6 +51,8 @@ select::-ms-expand {
         .form_grp .form_grp label{
             font-weight: bold;
             color: #00589c;
+            background: none;
+            // color: pink;
         }
 
         &:last-child{
@@ -89,6 +97,10 @@ select::-ms-expand {
             width: 100%;
             // @include gutter(0);
         }
+
+        input + .checkbox{
+            margin-top: 1em;
+        }
         
         &.form_inline {
             input[type="text"], select {
@@ -97,7 +109,7 @@ select::-ms-expand {
                 display: inline-block;
                 @include screen('xs_mobile') {
                     width: 100%;
-                    display: block;
+                    // display: block;
                 }
             }
             input + .checkbox{
@@ -116,13 +128,23 @@ select::-ms-expand {
                 margin-bottom: 0;  
                 // @include gutter();
 
+                &.mix-2-col,
+                &.mix-3-col,
+                &.mix-4-col{
+                    width: 100%;
+                }
+
                 // 第三層的設定
                 .form_grp {
                     display: inline-block;
                     border-bottom: 0;
                     padding: .15em;
                     margin-bottom: 0;
-                    .form_content {}
+                    width: 100%;
+                    .form_content {
+                        width: 100%;
+                        .form_grp{}
+                    }
 
                 }
             }
@@ -207,36 +229,61 @@ select::-ms-expand {
             }
         }
         // 綜合表單-欄位數
-        &.mix-1-col{
+        &.mix-float-col{
             width: 100%;
+            >.form_grp{
+                width: auto; 
+                display: inline-block;
+                // margin-right: 1.25em;
+                margin-right: 0;
+                >span{ margin-right: .4em; }
+                input[type="text"], select{
+                    min-width: auto;
+                    // width: 120px;
+                    width: calc(100% - 80px);
+                    +span{ margin-left: .4em; margin-right: .4em; }
+                }
+                .mix-2-col,
+                .mix-3-col,
+                .mix-4-col{ width: 100%; }
+            }
+        }
+
+        &.mix-1-col{
+            // width: 100%;
             .form_grp{
                 width: calc( 100% / 1 - 6px); 
-                input[type="text"]{
+                input[type="text"], select{
                     width: calc( 100% - 2em);
                     +span{ margin-left: .4em; }
                 }
             }
         }
         &.mix-2-col{
+            // width: 100%;
             input[type="text"], select {
                 min-width: calc( 100% / 2 - 6px);
             }
-            .form_grp{
-                width: calc( 100% / 2 - 6px); 
-                input[type="text"]{
-                    width: calc( 100% - 2em);
+            >.form_grp{
+                width: calc( 100% / 2 - 6px) !important;
+                label{
+                    display: block !important;
+                    text-align: left;
+                    font-weight: 500;
+                }
+                input[type="text"], select{
+                    width: calc( 100% - 3em);
                     +span{ margin-left: .4em; }
                 }
             }
         }
         &.mix-3-col{
             // width: 100%;
-
             input[type="text"], select {
                 min-width: calc( 100% / 3 - 6px);
             }
-            .form_grp{
-                width: calc( 100% / 3 - 6px);
+            >.form_grp{
+                width: calc( 100% / 3 - 6px) !important;
                 display: inline-block;
                 text-align: left;
                 
@@ -249,44 +296,31 @@ select::-ms-expand {
                     display: block !important;
                     // text-align: left;
                 }
-                input[type="text"]{
-                    width: calc( 100% - 2em);
+                input[type="text"], select{
+                    width: calc( 100% - 3em);
                     +span{ margin-left: .4em; }
                 }
 
             }
         }
         &.mix-4-col{
-            width: 100%;
-            .form_grp{
-                width: calc( 100% / 4 - 6px); 
+            // width: 100% !important;
+            >.form_grp{
+                width: calc( 100% / 4 - 6px) !important;
                 display: inline-block;
                 label{
                     display: block !important;
                     text-align: left;
                     font-weight: 500;
                 }
-                input[type="text"]{
-                    width: calc( 100% - 2em);
+                input[type="text"], select{
+                    width: calc( 100% - 3em);
                     +span{ margin-left: .4em; }
                 }
+                select{ min-width: 80%; }
             }
         }
-        &.mix-float-col{
-            width: 100%;
-            .form_grp{
-                width: auto; 
-                display: inline-block;
-                // margin-right: 1.25em;
-                margin-right: .4em;
-                >span{ margin-right: .4em; }
-                input[type="text"]{
-                    min-width: auto;
-                    width: 120px;
-                    +span{ margin-left: .4em; margin-right: .4em; }
-                }
-            }
-        }
+        
         // 
         .follower{
             width: 180px;
@@ -330,14 +364,33 @@ select::-ms-expand {
             }
         }
 
-                
+        @include screen('tablet') {
+            // 地址專屬
+            &.address {
+                // select { width: 50%; }
+                select+select+input[type="text"]{ width: 100% !important; }
+            }
+
+            &.mix-3-col{
+                input[type="text"],
+                select { min-width: calc( 100% / 2 - 6px); }
+                .form_grp{ width: 100% !important; }
+            }
+            
+            &.mix-2-col,
+            &.mix-4-col{
+                input[type="text"],
+                select { min-width: calc( 100% / 2 - 6px); }
+                .form_grp{ width: calc(100% / 2 - 6px ) !important; }
+            }
+        }
         @include screen('mobile') {
             &.mix-2-col{
-                input[type="text"], select { min-width: 100%; }
+                input[type="text"], select { max-width: 100%; }
                 .form_grp{ width: 100%; }
             }
             &.mix-3-col{
-                input[type="text"], select { min-width: 100%; }
+                input[type="text"], select { max-width: 100%; }
                 .form_grp{ width: 100%; }
             }
             &.mix-4-col{
@@ -345,7 +398,7 @@ select::-ms-expand {
             }
             &.mix-float-col{
                 .form_grp{
-                    width: 100%;
+                    width: 100% !important;
                     input[type="text"]{
                         width: 50%;
                         display: inline-block;
@@ -429,6 +482,31 @@ select::-ms-expand {
                 }
             }
         }
+    }
+
+    @include screen('mobile') {
+        margin: 0;
+        // >label, .form_title
+
+        .form_title{
+            margin: .5em 0;
+            padding-left: 1em;
+            padding-top: 0;
+            border-left: solid 4px #00589c;
+            font-size: 1.25em;
+
+            +.form_content{
+                .form_title{
+                    color: #222;
+                    border-left: 0;
+                    border-bottom: solid 2px #00589c;
+                    padding-bottom: .5em;
+                    padding-left: 0;
+                    font-size: 1.125em;
+                }
+            }
+        }
+
     }
 
     // 共同執行單位#1 表單
@@ -875,7 +953,8 @@ input[type="checkbox"]{ border-radius: 2px; }
 select {
     line-height: 2.4em;
     height: 2.4em;
-    padding: 0 24px 0 .5em;
+    // padding: 0 24px 0 .5em;
+    padding: 0 1.25em;
     border: 1px solid $color-gray;
     background: #fff url(../images/icon/icon_select_arrow.png) no-repeat right 10px center;
     background-size: 16px;
@@ -945,10 +1024,25 @@ input[type="radio"]:checked {
 }
 //---------------------------------------------readonly disable -------//
 input[readonly],
-input[disable],
+input[disabled],
 textarea[readonly],
-textarea[disable]{
+textarea[disabled]{
     background: lighten($color-gray, 15);
+    color: darken($color-gray, 10);
+    border-color: darken($color-gray, 10);
+    opacity: .6;
+    &~label {
+        color: darken($color-gray, 10);
+    }
+    &:hover,
+    &:focus {
+        border-color: darken($color-gray, 10);
+        box-shadow: none; // cursor: not-allowed;
+    }
+}
+
+select[disabled]{
+    background: url(../images/icon/icon_select_arrow.png) no-repeat right 10px center, lighten($color-gray, 15);
     color: darken($color-gray, 10);
     border-color: darken($color-gray, 10);
     &~label {
@@ -960,6 +1054,7 @@ textarea[disable]{
         box-shadow: none; // cursor: not-allowed;
     }
 }
+
 // 檔案上傳
 // 檔案移除
 // https://codepen.io/shubhamc_007/pen/oZyodd

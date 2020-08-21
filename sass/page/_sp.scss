@@ -517,13 +517,18 @@ div.tag,
 .flex{
 	display: flex;
 	flex-flow: row nowrap;
+    align-items: center;
 	margin-bottom: 1em;
 
-	.tag{ flex: 1 1 70%; }
+	.tag{
+        flex: 1 1 70%;
+        flex-basis: calc(100% - 150px);
+    }
 	.search{ flex: 1 1 30%; }
 	.btn_grp{
-		// flex: 1 1 auto;
+		flex: 1 1 150px;
 		padding: 0 0;
+        text-align: right;
 	}
 
 	// div{ flex: 1 1 50%; }
