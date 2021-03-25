@@ -722,26 +722,90 @@ $(function() {
     /////////////modal設定/////////////
     /*-----------------------------------*/
     $(function() {
+        // 第一個跳（ #openModal 打開 #modal1 / .modal）
         $('#modal1').hide();                                                                //先隱藏視窗
         $('.modal').after('<div class="modal_overlay"></div>');                             //新增透明底
         $('.modal').prepend('<button type="button" class="close">關閉</button>');           //新增關閉按鈕
         $('.modal_overlay').hide();                                                         //隱藏透明底
-        //按鈕動作
+        // PDF跳窗（ #openModal 打開 #openPDF / .PDF）
+        $('#modal_PDF').hide();                                                            //先隱藏視窗
+        $('.PDF').after('<div class="modal_overlay"></div>');                              //新增透明底
+        $('.PDF').prepend('<button type="button" class="close">關閉</button>');            //新增關閉按鈕
+        $('.modal_overlay').hide();                                                        //隱藏透明底
+        // 資訊視窗（ #openInfo 打開 #modal_info / .tiny）
+        $('#modal_info').hide();                                                            //先隱藏視窗
+        $('.tiny').after('<div class="modal_overlay"></div>');                              //新增透明底
+        $('.tiny').prepend('<button type="button" class="close">關閉</button>');            //新增關閉按鈕
+        $('.modal_overlay').hide();                                                        //隱藏透明底
+
+
+        //按鈕動作  ---------------------------------------------------------------
+        // 第一個跳窗
         $('#openModal').click(function(e) {
-            $('.modal_overlay').fadeIn(100);
+            $('.modal').next('.modal_overlay').fadeIn(100);
             $('.modal').fadeIn(100);
             $('body').addClass('noscroll');
             e.preventDefault();
         });
-        //關閉function
+        // PDF跳窗
+        $('#openPDF').click(function(e) {
+            $('.PDF').next('.modal_overlay').fadeIn(100);
+            $('.PDF').fadeIn(100);
+            $('body').addClass('noscroll');
+            e.preventDefault();
+        });
+        // 資訊視窗
+        $('#openInfo').click(function(e) {
+            $('.tiny').next('.modal_overlay').fadeIn(100);
+            $('.tiny').fadeIn(100);
+            $('body').addClass('noscroll');
+            e.preventDefault();
+        });
+
+        //關閉function  ---------------------------------------------------------------
         function closeModal(){
+            // 第一個跳窗
             $('#modal1').hide();
+            // PDF跳窗
+            $('#modal_PDF').hide();
+            // 資訊視窗
+            $('#modal_info').hide();
+
             $('.modal_overlay').hide();
             $('body').removeClass('noscroll');
         }
-        //點選關閉按鈕及透明底都可關閉
+        //點選關閉按鈕及透明底都可關閉  ---------------------------------------------------------------
         $('.modal_overlay').click(closeModal);
+        // 第一個跳窗
         $('.modal .close').click(closeModal);
+        // PDF跳窗
+        $('.PDF .close').click(closeModal);
+        // 資訊視窗
+        $('.tiny .close').click(closeModal);
 
     });
+
+    // $(function() {
+    //     $('#modal_PDF').hide();                                                           //先隱藏視窗
+    //     $('.PDF').after('<div class="modal_overlay"></div>');                             //新增透明底
+    //     $('.PDF').prepend('<button type="button" class="close">關閉</button>');           //新增關閉按鈕
+    //     $('.modal_overlay').hide();                                                       //隱藏透明底
+    //     //按鈕動作
+    //     $('#openPDF').click(function(e) {
+    //         $('.modal_overlay').fadeIn(100);
+    //         $('.PDF').fadeIn(100);
+    //         $('body').addClass('noscroll');
+    //         e.preventDefault();
+    //     });
+
+    //     //關閉function
+    //     function closeModal(){
+    //         $('#modal_PDF').hide();
+    //         $('.modal_overlay').hide();
+    //         $('body').removeClass('noscroll');
+    //     }
+    //     //點選關閉按鈕及透明底都可關閉
+    //     $('.modal_overlay').click(closeModal);
+    //     $('.PDF .close').click(closeModal);
+    // });
 });

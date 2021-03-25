@@ -1,4 +1,3 @@
-
 $form_title_width :150px;       // 表單title寬度
 
 @mixin formStyle($f_color:$color-word, $f_border:$color-gray, $f_radius:$btn-radius) {
@@ -21,6 +20,7 @@ select::-ms-expand {
 .notic{
     color: red;
     padding: .25em 0;
+    line-height: 1.3;
     &.uncheck{
         color: #4e4e4e;
     }
@@ -46,12 +46,35 @@ select::-ms-expand {
                 margin: 0 .5em .5em 0;
             }
         }
+
+        // 警示
+        &.warn{
+            >.form_title{
+                color: red;
+            }
+
+            .form_content{
+                &.mix-1-col, &.mix-2-col, &.mix-3-col, &.mix-4-col{
+                    display: flex;
+                    flex-flow: row wrap;
+                    .form_grp{}
+
+                    input{}
+                }
+            }
+
+            .this{
+                box-shadow: inset 0 0 0 2px red;
+                border: solid 1px red;
+            }
+        }
         
         .form_grp label,
         .form_grp .form_grp label{
             font-weight: bold;
             color: #00589c;
             background: none;
+            width: 100%;
             // color: pink;
         }
 
@@ -98,9 +121,9 @@ select::-ms-expand {
             // @include gutter(0);
         }
 
-        input + .checkbox{
-            margin-top: 1em;
-        }
+        // input + .checkbox{
+        //     margin-top: 1em;
+        // }
         
         &.form_inline {
             input[type="text"], select {
@@ -112,9 +135,9 @@ select::-ms-expand {
                     // display: block;
                 }
             }
-            input + .checkbox{
-                margin-top: 1em;
-            }
+            // input + .checkbox{
+            //     margin-top: 1em;
+            // }
         }
 
         // 第二層的設定
@@ -126,6 +149,7 @@ select::-ms-expand {
                 border-bottom: 0;
                 padding: 0;
                 margin-bottom: 0;  
+                width: 100%;
                 // @include gutter();
 
                 &.mix-2-col,
@@ -139,6 +163,7 @@ select::-ms-expand {
                     display: inline-block;
                     border-bottom: 0;
                     padding: .15em;
+                    // padding: 0 .15em;
                     margin-bottom: 0;
                     width: 100%;
                     .form_content {
@@ -254,7 +279,7 @@ select::-ms-expand {
             .form_grp{
                 width: calc( 100% / 1 - 6px); 
                 input[type="text"], select{
-                    width: calc( 100% - 2em);
+                    width: calc( 100% - 3em);
                     +span{ margin-left: .4em; }
                 }
             }
@@ -300,8 +325,44 @@ select::-ms-expand {
                     width: calc( 100% - 3em);
                     +span{ margin-left: .4em; }
                 }
-
             }
+        }
+        &.mix-63-col{
+            // width: 100%;
+            // input[type="text"], select {
+            //     min-width: calc( 100% / 3 - 6px);
+            // }
+
+
+            >.form_grp{
+                &:first-child{
+                    width: calc( (100% / 12)*6 - 6px);
+                }
+                &:nth-child(2){
+                    width: calc( (100% / 12)*3 - 6px);
+                }
+            }
+
+            // >.form_grp{
+            //     width: calc( 100% / 3 - 6px) !important;
+            //     display: inline-block;
+            //     text-align: left;
+                
+            //     &:last-child{
+            //         // border-bottom: 1px dashed #DDD !important;
+            //         margin-bottom: .2em !important;
+            //     }
+
+            //     label{
+            //         display: block !important;
+            //         // text-align: left;
+            //     }
+            //     input[type="text"], select{
+            //         width: calc( 100% - 3em);
+            //         +span{ margin-left: .4em; }
+            //     }
+
+            // }
         }
         &.mix-4-col{
             // width: 100% !important;
@@ -318,6 +379,85 @@ select::-ms-expand {
                     +span{ margin-left: .4em; }
                 }
                 select{ min-width: 80%; }
+            }
+        }
+
+        // 表單尾部。塞按鈕
+        &.flex-free-col,
+        &.flex-2-col,
+        &.flex-3-col,
+        &.flex-4-col,
+        &.flex-63-col{
+            display: flex !important;
+            flex-flow: row nowrap;
+            // align-items: center;
+            width: 100%;
+
+            // input[type="text"], select {
+            //     min-width: calc( 100% / 2 - 6px);
+            // }
+            >.form_grp{
+                // width: calc( 100% / 2 - 6px) !important;
+                label{
+                    display: block !important;
+                    text-align: left;
+                    font-weight: 500;
+                }
+                input[type="text"], select{
+                    // width: calc( 100% - 3em);
+                    +span{ margin-left: .4em; }
+                }
+
+                +.btn-minus{ align-self: center; }  // 垂直置中
+            }
+        }
+        &.flex-free-col{
+            &.no-label{
+
+                // 表單沒有 label 時，按鈕垂直齊上
+                .btn-addition,
+                .btn-branch,
+                .btn-export,
+                .btn-minus{ align-self: flex-start; }
+            }
+
+            >.form_grp{
+                .form_content{
+                    display: flex !important;
+                    flex-flow: row wrap;
+                    width: 100%;
+
+                    label{}
+                    input[type="text"], select{
+                        width: calc(100% - 60px);
+                        +span{
+                            width: 60px;
+                            line-height: 38px;
+                        }
+                    }
+                }
+            }
+        }
+        &.flex-63-col{
+            &.no-label{
+                // 表單沒有 label 時，按鈕垂直齊上
+                .btn-addition,
+                .btn-branch,
+                .btn-export,
+                .btn-minus{ align-self: flex-start; }
+            }
+
+            >.form_grp{
+                input[type="text"], select{ width: 100%; }
+
+                &:nth-child(1){
+                    flex: 1 1 auto;
+                    flex-basis: calc(100% / 12 * 6);
+                }
+                &:nth-child(2){
+                    flex: 1 1 auto;
+                    flex-basis: calc(100% / 12 * 3);
+                }
             }
         }
         
@@ -364,13 +504,7 @@ select::-ms-expand {
             }
         }
 
-        @include screen('tablet') {
-            // 地址專屬
-            &.address {
-                // select { width: 50%; }
-                select+select+input[type="text"]{ width: 100% !important; }
-            }
-
+        @include screen('notebook'){
             &.mix-3-col{
                 input[type="text"],
                 select { min-width: calc( 100% / 2 - 6px); }
@@ -383,6 +517,49 @@ select::-ms-expand {
                 select { min-width: calc( 100% / 2 - 6px); }
                 .form_grp{ width: calc(100% / 2 - 6px ) !important; }
             }
+        }
+
+        @include screen('tablet') {
+            // 地址專屬
+            &.address {
+                // select { width: 50%; }
+                select+select+input[type="text"]{ width: 100% !important; }
+            }
+
+            // &.mix-3-col{
+            //     input[type="text"],
+            //     select { min-width: calc( 100% / 2 - 6px); }
+            //     .form_grp{ width: 100% !important; }
+            // }
+            
+            // &.mix-2-col,
+            // &.mix-4-col{
+            //     input[type="text"],
+            //     select { min-width: calc( 100% / 2 - 6px); }
+            //     .form_grp{ width: calc(100% / 2 - 6px ) !important; }
+            // }
+
+            &.flex-free-col{}
+
+            &.flex-free-col,
+            &.flex-2-col,
+            &.flex-3-col,
+            &.flex-4-col,
+            &.flex-63-col{
+                flex-flow: row wrap;
+            }
+
+            &.flex-63-col{
+                >.form_grp{
+                    &:nth-child(1),
+                    &:nth-child(2){
+                        flex: 1 1 auto;
+                        flex-basis: 100%;
+                    }
+                }
+            }
+
+
         }
         @include screen('mobile') {
             &.mix-2-col{
@@ -529,8 +706,9 @@ select::-ms-expand {
     background: #fbfbfb;
     padding: 0 2em 0;
 
-    &:first-child{ margin: 1em 0; }
-    margin: .5em 0 0;
+    // &:first-child{ margin: 1em 0; }
+    // margin: .5em 0 0;
+    margin: 1em 0;
 
     h3.title{
         background: $primaryColor;

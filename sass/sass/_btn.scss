@@ -65,12 +65,15 @@ $btn-radius: 60px;
 
     &.btn-addition,
     &.btn-branch,
-    &.btn-export{
+    &.btn-export,
+    &.btn-minus{
         border-radius: 4px !important;
         border: none !important;
         color: #fff;
         padding-right: 50px;
         margin: .25em 0 0;
+
+        align-self: center;
     }
 
     
@@ -94,6 +97,18 @@ $btn-radius: 60px;
     &.btn-export{
         background: url(../images/icon/icon_export_white.svg) right .75em top 50% no-repeat,#555 !important;
         background-size: 18px 18px !important;
+    }
+
+    // 刪除 1
+    &.btn-minus{
+        background: url(../images/icon/icon_minus_white.svg) 50% 50% no-repeat, #555 !important;
+        background-size: 26px 26px !important;
+        font-size: 0;
+        min-width: 42px;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        padding: 0;
     }
 
 

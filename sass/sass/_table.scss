@@ -1,7 +1,9 @@
 //http://lab.25sprout.com/responsive_table/
+
 table {
     width: 100%;
     border-collapse: collapse;
+
     @include screen('xs_mobile') {
         width: 100%;
     }
