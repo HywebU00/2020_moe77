@@ -43,7 +43,7 @@ $btn-radius: 60px;
     line-height: normal;
     width: auto;
     padding: $btn-padding;
-    min-width: 8em;
+    // min-width: 8em;
     margin: .25em .1em;
     
     i {
@@ -70,7 +70,7 @@ $btn-radius: 60px;
         border-radius: 4px !important;
         border: none !important;
         color: #fff;
-        padding-right: 50px;
+        padding-right: 40px;
         margin: .25em 0 0;
 
         align-self: center;
@@ -101,14 +101,16 @@ $btn-radius: 60px;
 
     // 刪除 1
     &.btn-minus{
-        background: url(../images/icon/icon_minus_white.svg) 50% 50% no-repeat, #555 !important;
-        background-size: 26px 26px !important;
-        font-size: 0;
-        min-width: 42px;
-        width: 42px;
-        height: 42px;
-        padding: 0;
-        padding: 0;
+        // background: url(../images/icon/icon_minus_white.svg) 50% 50% no-repeat, #555 !important;
+        // background-size: 26px 26px !important;
+        // font-size: 0;
+        // min-width: 42px;
+        // width: 42px;
+        // height: 42px;
+        // padding: 0;
+        // padding: 0;
+        background: url(../images/icon/icon_minus_white.svg) right .75em top 50% no-repeat, #555 !important;
+        background-size: 18px 18px !important;
     }
 
 
