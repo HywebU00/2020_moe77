@@ -4,7 +4,7 @@ $form_title_width :150px;       // 表單title寬度
     color: $f_color;
     font-size: 1em;
     border: 1px solid $f_border;
-    padding: .5em 1.25em;
+    padding: .5em 1em;
     background: #fff;
     vertical-align: middle;
     margin-bottom: .3em;
@@ -280,7 +280,7 @@ select::-ms-expand {
                 width: calc( 100% / 1 - 6px); 
                 input[type="text"], select{
                     width: calc( 100% - 3em);
-                    +span{ margin-left: .4em; }
+                    // +span{ margin-left: .4em; }
                 }
             }
         }
@@ -297,8 +297,8 @@ select::-ms-expand {
                     font-weight: 500;
                 }
                 input[type="text"], select{
-                    width: calc( 100% - 3em);
-                    +span{ margin-left: .4em; }
+                    width: calc( 100% - 2.4em);
+                    // +span{ margin-left: .4em; }
                 }
             }
         }
@@ -322,8 +322,8 @@ select::-ms-expand {
                     // text-align: left;
                 }
                 input[type="text"], select{
-                    width: calc( 100% - 3em);
-                    +span{ margin-left: .4em; }
+                    width: calc( 100% - 2.5em);
+                    // +span{ margin-left: .4em; }
                 }
             }
         }
@@ -376,7 +376,7 @@ select::-ms-expand {
                 }
                 input[type="text"], select{
                     width: calc( 100% - 3em);
-                    +span{ margin-left: .4em; }
+                    // +span{ margin-left: .4em; }
                 }
                 select{ min-width: 80%; }
             }
@@ -405,7 +405,7 @@ select::-ms-expand {
                 }
                 input[type="text"], select{
                     // width: calc( 100% - 3em);
-                    +span{ margin-left: .4em; }
+                    // +span{ margin-left: .4em; }
                 }
 
                 +.btn-minus{ align-self: center; }  // 垂直置中
@@ -1132,9 +1132,9 @@ select {
     line-height: 2.4em;
     height: 2.4em;
     // padding: 0 24px 0 .5em;
-    padding: 0 1.25em;
+    padding: 0 1.25em 0 .65em;
     border: 1px solid $color-gray;
-    background: #fff url(../images/icon/icon_select_arrow.png) no-repeat right 10px center;
+    background: #fff url(../images/icon/icon_select_arrow.png) no-repeat right 4px center;
     background-size: 16px;
     option {
         outline: none;
