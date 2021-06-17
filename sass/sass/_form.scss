@@ -300,6 +300,7 @@ select::-ms-expand {
                     width: calc( 100% - 2.4em);
                     // +span{ margin-left: .4em; }
                 }
+                input[type="text"]{ margin-right: 2px;}
             }
         }
         &.mix-3-col{
