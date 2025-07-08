@@ -109,6 +109,14 @@
             max-width: 300px;
             max-height: 75px;
         }
+
+        + a{
+            display: inline-block;
+            img{
+                height: 75px;
+            }
+        }
+
         @include screen('tablet') {
             padding: 2px 60px;
             width: 100%;

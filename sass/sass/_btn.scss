@@ -34,7 +34,7 @@ $btn-radius: 60px;
 %btn {
     font-size: $font-size;
     touch-action: manipulation;
-    background-image: none; //修正firefox
+    // background-image: none; //修正firefox
     display: inline-block;
     text-align: center;
     vertical-align: middle;

@@ -619,7 +619,6 @@ kbd kbd {
 input[type=button], .btn-reset, .btn-submit, .btn-purple, .btn-red, .btn-orange, .btn-yellow, .btn-blue, .btn-green, .btn {
   font-size: 1em;
   touch-action: manipulation;
-  background-image: none;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -2908,7 +2907,6 @@ input[type=button], input[type=submit], input[type=reset], .upload_grp .upload_b
 .upload_delet_grp .delet_btn {
   font-size: 1em;
   touch-action: manipulation;
-  background-image: none;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -3800,6 +3798,12 @@ img.img-responsive {
   display: block;
   max-width: 300px;
   max-height: 75px;
+}
+.header h1 + a {
+  display: inline-block;
+}
+.header h1 + a img {
+  height: 75px;
 }
 @media screen and (max-width: 991px) {
   .header h1 {
